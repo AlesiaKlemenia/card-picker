@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.cdnfonts.com/css/space-grotesk" rel="stylesheet">
+
   <title>Frontend Mentor | Interactive card details form</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
@@ -15,37 +17,46 @@
   </style>
 </head>
 <body>
-
-  0000 0000 0000 0000
-  Jane Appleseed
-  00/00
-
-  000
-
-  Cardholder Name
-  e.g. Jane Appleseed
-
-  Card Number
-  e.g. 1234 5678 9123 0000
-
-  Exp. Date (MM/YY)
-  MM
-  YY
-
-  CVC
-  e.g. 123
-
-  Confirm
-
-  <!-- Completed state start -->
-
-  Thank you!
-  We've added your card details
-  Continue
-  
+  <div class="sidebar"></div>
+  <div class="cards">
+    <div class="card front">
+      <svg width="84" height="47" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="23.478" cy="23.5" rx="23.478" ry="23.5" fill="#fff"/><path d="M83.5 23.5c0 5.565-4.507 10.075-10.065 10.075-5.559 0-10.065-4.51-10.065-10.075 0-5.565 4.506-10.075 10.065-10.075 5.558 0 10.065 4.51 10.065 10.075Z" stroke="#fff"/></svg>
+      <span>0000 0000 0000 0000</span>
+      <div>
+        <p class="name">JANE APPLESEED</p>
+        <p class="date">00/00</p>
+      </div>
+    </div>
+    <div class="card back">
+      <span>000</span>
+    </div>
+  </div>
+  <form name="creds" class="creds">
+    <div>
+      <span>CARDHOLDER NAME</span>
+      <input form="creds" type="text" placeholder="e.g. Jane Applessed" required>
+    </div>
+    <div>
+      <span>CARD NUMBER</span>
+      <input form="creds" type="text" placeholder="e.g. 1234 5678 9123 0000" required>
+    </div>
+    <div class="wrapper">
+      <div class="date-field">
+        <span>EXP. DATE (MM/YY)</span>
+        <input form="creds" type="text" inputmode="numeric" pattern="\d*" placeholder="MM" required>
+        <input form="creds" type="text" inputmode="numeric" pattern="\d*" placeholder="YY" required>
+      </div>
+      <div class="cvc-field">
+        <span>CVC</span>
+        <input form="creds" type="text" inputmode="numeric" pattern="\d*" placeholder="e.g. 123" required>
+      </div>
+    </div>
+    <input type="submit" value="Confirm"></input>
+  </form>
+  <!-- Completed state start
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Coded by <a href="#">Alesia Klemenia</a>. -->
   </div>
 </body>
 </html>

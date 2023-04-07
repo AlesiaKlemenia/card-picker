@@ -1,0 +1,200 @@
+@import url('https://fonts.cdnfonts.com/css/space-grotesk');
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 500;
+}
+
+.sidebar {
+    width: 483px;
+    height: 100%;
+    background: url('./images/bg-main-desktop.png') no-repeat;
+}
+
+.cards {
+    width: 541px;
+    height: 527px;
+
+    position: absolute;
+    left: 164px;
+    top: 187px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card {
+    margin: 0;
+    padding: 0;
+    width: 447px;
+    height: 245px;
+    border-radius: 10px;
+    color: white;
+
+    display: flex;
+}
+
+.card > * {
+    position: absolute;
+
+    letter-spacing: 3.42222px;
+    font-size: 28px;
+    line-height: 36px;
+}
+
+.card svg {
+    top: 28px;
+    left: 32px;
+}
+
+.card > span {
+    top: 139px;
+    left: 32px;
+}
+
+.card > div {
+    top: 200.5px;
+    left: 32px;
+    width: 383.14px;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 14px;
+    line-height: 18px;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.card > div > p {
+    margin :0;
+    margin: 0;
+}
+
+.front {
+    background: url('./images/bg-card-front.png') no-repeat;
+}
+
+.back {
+    background: url('./images/bg-card-back.png') no-repeat;
+    align-self: flex-end;
+}
+
+.back > span {
+    position: absolute;
+    top: 393px;
+    left: 452px;
+
+    font-size: 14px;
+    line-height: 18px;
+
+    text-align: right;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+form {
+    width: 381px;
+    height: 352px;
+
+    position: absolute;
+    top: 275px;
+    left: 832px;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+form > div,
+form > button {
+    width: 381px;
+    height: 69px;
+    margin-bottom: 26px;
+}
+
+form > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.date-field {
+    width: 170px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.date-field > input {
+    width: 80px;
+}
+
+.date-field > input:first-of-type {
+    margin-right: 10px;
+}
+
+.cvc-field {
+    width: 191px;
+
+    justify-self: flex-end;
+}
+
+.cvc-field > input {
+    width: 191px;
+}
+
+form > div span {
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+form > div input {
+    height: 45px;
+    padding: 11px 16px;
+
+    box-sizing: border-box;
+    border: 1px solid #DFDEE0;
+    border-radius: 8px;
+
+    font-size: 18px;
+    line-height: 23px;
+
+    color: #21092F;
+}
+
+input::placeholder {
+    mix-blend-mode: normal;
+    opacity: 0.25;
+}
+
+form > input {
+    height: 53px;
+    padding: 0;
+    border: none;
+
+    font-size: 18px;
+    line-height: 23px;
+    color: white;
+
+    background: #21092F;
+    border-radius: 8px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+}
