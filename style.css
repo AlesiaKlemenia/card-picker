@@ -13,7 +13,7 @@ body {
     font-weight: 500;
 }
 
-.sidebar {
+.background-layout {
     width: 483px;
     height: 100%;
     background: url('./images/bg-main-desktop.png') no-repeat;
@@ -197,4 +197,160 @@ form > input {
 .wrapper {
     display: flex;
     flex-direction: row;
+}
+
+@media screen and (max-width: 375px) {
+    .background-layout {
+        width: 100%;
+        height: 240px;
+        background: url('./images/bg-main-mobile.png') no-repeat;
+    }
+    .cards {
+        width: 343px;
+        height: 251px;
+
+        left: 16px;
+        top: 32px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .card {
+        width: 286px;
+        height: 157px;
+        background-size: contain;
+        position: absolute;
+        border-radius: 6px;
+    }
+    .back {
+        z-index: 1;
+        right: 0;
+        top: 0;
+    }
+    .back > span {
+        z-index: 2;
+        color: white;
+        left: 229px;
+
+        width: 20px;
+        height: 11px;
+        position: absolute;
+        top: 73px;
+        right: 37px;
+    
+        font-size: 9px;
+        line-height: 11px;
+    
+        text-align: right;
+        letter-spacing: 1.28571px;
+    }
+    .front {
+        z-index: 2;
+        left: 0;
+        bottom: 0;
+    }
+    .front svg {
+        position: absolute;
+        width: 54px;
+        height: 30px;
+        left: 20px;
+        top: 18px;
+    }
+    .front > span {
+        position: absolute;
+        height: 23px;
+        left: 6.99%;
+        right: 9.44%;
+        top: calc(50% - 23px/2 + 18px);
+
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 23px;
+
+        letter-spacing: 2.2px;
+    }
+    .front div {
+        width: 245.11px;
+        position: absolute;
+        left: 6.99%;
+        right: 7.31%;
+        top: 79.62%;
+        bottom: 12.74%;
+
+        font-size: 9px;
+        line-height: 11px;
+        letter-spacing: 1.28571px;
+        text-transform: uppercase;
+
+        color: #FFFFFF;
+    }
+    form {
+        width: 327px;
+        height: 328px;
+
+        position: absolute;
+        top: 331px;
+        left: 24px;
+    }
+    form > div {
+        width: 327px;
+        height: 69px;
+        margin-bottom: 20px;
+    }
+    form > div > span {
+        font-size: 12px;
+        line-height: 15px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+    form > div > input {
+        width: 327px;
+        height: 45px;
+        border: 1px solid #DFDEE0;
+        border-radius: 8px;
+    }
+    input::placeholder {
+        mix-blend-mode: normal;
+        opacity: 0.25;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 23px;
+    }
+    .date-field {
+        margin-right: 11px;
+    }
+    .date-field > span {
+        height: 15px;
+        font-size: 12px;
+        line-height: 15px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+    .date-field input {
+        width: 72px;
+    }
+    .date-field > input:first-of-type {
+        margin-right: 8px;
+    }
+    .cvc-field {
+        width: 164px;
+        height: 69px;
+    }
+    .cvc-field span {
+        display: block;
+        height: 15px;
+        margin-bottom: 5px;
+    }
+    .cvc-field input {
+        width: 100%;
+    }
+    form > input {
+        width: 100%;
+        height: 53px;
+        border-radius: 8px;
+
+        font-size: 18px;
+        line-height: 23px;
+    }
 }

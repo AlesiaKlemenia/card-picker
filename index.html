@@ -6,6 +6,7 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
   <link href="https://fonts.cdnfonts.com/css/space-grotesk" rel="stylesheet">
 
   <title>Frontend Mentor | Interactive card details form</title>
@@ -17,10 +18,13 @@
   </style>
 </head>
 <body>
-  <div class="sidebar"></div>
+  <div class="background-layout"></div>
   <div class="cards">
     <div class="card front">
-      <svg width="84" height="47" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="23.478" cy="23.5" rx="23.478" ry="23.5" fill="#fff"/><path d="M83.5 23.5c0 5.565-4.507 10.075-10.065 10.075-5.559 0-10.065-4.51-10.065-10.075 0-5.565 4.506-10.075 10.065-10.075 5.558 0 10.065 4.51 10.065 10.075Z" stroke="#fff"/></svg>
+      <svg  viewBox="0 0 84 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="23.478" cy="23.5" rx="23.478" ry="23.5" fill="#fff"/>
+        <path d="M83.5 23.5c0 5.565-4.507 10.075-10.065 10.075-5.559 0-10.065-4.51-10.065-10.075 0-5.565 4.506-10.075 10.065-10.075 5.558 0 10.065 4.51 10.065 10.075Z" stroke="#fff"/>
+      </svg>
       <span>0000 0000 0000 0000</span>
       <div>
         <p class="name">JANE APPLESEED</p>
@@ -31,10 +35,10 @@
       <span>000</span>
     </div>
   </div>
-  <form name="creds" class="creds">
+  <form name="creds" class="card-form">
     <div>
       <span>CARDHOLDER NAME</span>
-      <input form="creds" type="text" placeholder="e.g. Jane Applessed" required>
+      <input form="creds" type="text" placeholder="e.g. Jane Applessed" class="form-input-name" required>
     </div>
     <div>
       <span>CARD NUMBER</span>
