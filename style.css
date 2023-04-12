@@ -51,7 +51,10 @@ body {
     line-height: 36px;
 }
 
-.card svg {
+.svg {
+    position: absolute;
+    width: 84px;
+    height: 47px;
     top: 28px;
     left: 32px;
 }
@@ -61,7 +64,7 @@ body {
     left: 32px;
 }
 
-.card > div {
+.card > div:last-child {
     top: 200.5px;
     left: 32px;
     width: 383.14px;
@@ -250,7 +253,7 @@ form > input {
         left: 0;
         bottom: 0;
     }
-    .front svg {
+    .svg {
         position: absolute;
         width: 54px;
         height: 30px;
@@ -270,7 +273,7 @@ form > input {
 
         letter-spacing: 2.2px;
     }
-    .front div {
+    .front div:last-child {
         width: 245.11px;
         position: absolute;
         left: 6.99%;
