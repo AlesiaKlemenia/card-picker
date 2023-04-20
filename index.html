@@ -2,22 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link async href="https://fonts.cdnfonts.com/css/space-grotesk" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="style.css">
   <script src="script.js"></script>
-  <link href="https://fonts.cdnfonts.com/css/space-grotesk" rel="stylesheet">
 
   <title>Frontend Mentor | Interactive card details form</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
   </style>
 </head>
-<body>
+<body onload="initializeListeners()">
   <div class="background-layout"></div>
   <div class="cards">
     <div class="card front">
@@ -27,38 +26,40 @@
           <path d="M83.5 23.5c0 5.565-4.507 10.075-10.065 10.075-5.559 0-10.065-4.51-10.065-10.075 0-5.565 4.506-10.075 10.065-10.075 5.558 0 10.065 4.51 10.065 10.075Z" stroke="#fff"/>
         </svg>
       </div>
-      <span>0000 0000 0000 0000</span>
+      <span class="user-card">0000 0000 0000 0000</span>
       <div>
-        <p class="name">JANE APPLESEED</p>
-        <p class="date">00/00</p>
+        <p class="user-name">JANE APPLESEED</p>
+        <p class="date"><span class="user-card-month">00</span>/<span class="user-card-year">00</span></p>
       </div>
     </div>
     <div class="card back">
-      <span>000</span>
+      <span class="user-card-cvc">000</span>
     </div>
   </div>
-  <form name="creds" class="card-form">
-    <div>
-      <span>CARDHOLDER NAME</span>
-      <input form="creds" type="text" placeholder="e.g. Jane Applessed" class="form-input-name" required>
-    </div>
-    <div>
-      <span>CARD NUMBER</span>
-      <input form="creds" type="text" placeholder="e.g. 1234 5678 9123 0000" required>
-    </div>
-    <div class="wrapper">
-      <div class="date-field">
-        <span>EXP. DATE (MM/YY)</span>
-        <input form="creds" type="text" inputmode="numeric" pattern="\d*" placeholder="MM" required>
-        <input form="creds" type="text" inputmode="numeric" pattern="\d*" placeholder="YY" required>
+  <div class="form-wrapper">
+    <form name="creds" class="card-form" onsubmit="return false">
+      <div>
+        <span>CARDHOLDER NAME</span>
+        <input form="creds" type="text" pattern="^[a-zA-Z,.'-]+ [a-zA-Z,.'-]+$" placeholder="e.g. Jane Applessed" class="form-input-name" required>
       </div>
-      <div class="cvc-field">
-        <span>CVC</span>
-        <input form="creds" type="text" inputmode="numeric" pattern="\d*" placeholder="e.g. 123" required>
+      <div>
+        <span>CARD NUMBER</span>
+        <input form="creds" type="text" inputmode="numeric" maxlength="16" pattern="^\d{16}$" placeholder="e.g. 1234 5678 9123 0000" class="form-input-card-number" required>
       </div>
-    </div>
-    <input type="submit" value="Confirm"></input>
-  </form>
+      <div class="wrapper">
+        <div class="date-field">
+          <span>EXP. DATE (MM/YY)</span>
+          <input form="creds" type="text" inputmode="numeric" maxlength="2" pattern="^\d$" placeholder="MM" class="form-input-card-month" required>
+          <input form="creds" type="text" inputmode="numeric" maxlength="2" pattern="^\d$" placeholder="YY" class="form-input-card-year" required>
+        </div>
+        <div class="cvc-field">
+          <span>CVC</span>
+          <input form="creds" type="text" inputmode="numeric" maxlength="3" pattern="^\d$" placeholder="e.g. 123" class="form-input-cvc" required>
+        </div>
+      </div>
+      <input type="submit" class="submit-button" value="Confirm" onclick="addCard()"></input>
+    </form>
+  </div>
   <!-- Completed state start
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 

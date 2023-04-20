@@ -62,6 +62,8 @@ body {
 .card > span {
     top: 139px;
     left: 32px;
+
+    font-variant-numeric: tabular-nums;
 }
 
 .card > div:last-child {
@@ -106,13 +108,20 @@ body {
     text-transform: uppercase;
 }
 
-form {
+.form-wrapper {
     width: 381px;
     height: 352px;
 
     position: absolute;
     top: 275px;
     left: 832px;
+
+    display: flex;
+}
+
+form {
+    width: 381px;
+    height: 352px;
 
     display: flex;
     flex-direction: column;
@@ -138,6 +147,16 @@ form > div {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+input:focus {
+    outline: none;
+    position: relative;
+    background-clip: padding-box;
+    border-radius: 8px;
+    border-image-source: linear-gradient(#6348FE, #610595);
+    border-width: 1px;
+    border-image-slice: 1;
 }
 
 .date-field > input {
@@ -200,6 +219,68 @@ form > input {
 .wrapper {
     display: flex;
     flex-direction: row;
+}
+
+.submit-circle {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background: linear-gradient(163.95deg, #6348FE 4.74%, #610595 88.83%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-wrapper {
+    width: 381px;
+    height: 176px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-wrapper {
+    width: 381px;
+    height: 75px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-wrapper > h3 {
+    margin: 0;
+
+    font-size: 28px;
+    line-height: 36px;
+    text-align: center;
+    letter-spacing: 3.42222px;
+}
+
+.text-wrapper > p {
+    margin: 0;
+    
+    font-size: 18px;
+    line-height: 23px;
+    text-align: center;
+    color: #8F8694;
+}
+
+.continue-button {
+    width: 381px;
+    height: 53px;
+
+    background: #21092F;
+    border-radius: 8px;
+
+    font-size: 18px;
+    line-height: 23px;
+
+    color: #FFFFFF;
 }
 
 @media screen and (max-width: 375px) {
@@ -288,7 +369,7 @@ form > input {
 
         color: #FFFFFF;
     }
-    form {
+    .form-wrapper {
         width: 327px;
         height: 328px;
 
@@ -355,5 +436,9 @@ form > input {
 
         font-size: 18px;
         line-height: 23px;
+    }
+    .continue-button {
+        width: 327px;
+        height: 53px;
     }
 }
