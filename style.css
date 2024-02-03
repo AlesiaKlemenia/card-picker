@@ -170,7 +170,8 @@ input:focus {
 .cvc-field {
     width: 191px;
 
-    justify-self: flex-end;
+    display: flex;
+    flex-direction: column;
 }
 
 .cvc-field > input {
@@ -178,6 +179,8 @@ input:focus {
 }
 
 form > div span {
+    margin-bottom: 9px;
+    
     font-size: 12px;
     line-height: 15px;
     letter-spacing: 2px;
@@ -186,7 +189,7 @@ form > div span {
 
 form > div input {
     height: 45px;
-    padding: 11px 16px;
+    padding: 11px 16px 8px 16px;
 
     box-sizing: border-box;
     border: 1px solid #DFDEE0;
@@ -196,6 +199,14 @@ form > div input {
     line-height: 23px;
 
     color: #21092F;
+}
+
+form > div p {
+    height: 15px;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #FF5050;
 }
 
 input::placeholder {

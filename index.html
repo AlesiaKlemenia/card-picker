@@ -41,20 +41,24 @@
       <div>
         <span>CARDHOLDER NAME</span>
         <input form="creds" type="text" pattern="^[a-zA-Z,.'-]+ [a-zA-Z,.'-]+$" placeholder="e.g. Jane Applessed" class="form-input-name" required>
+        <p></p>
       </div>
       <div>
         <span>CARD NUMBER</span>
         <input form="creds" type="text" inputmode="numeric" maxlength="16" pattern="^\d{16}$" placeholder="e.g. 1234 5678 9123 0000" class="form-input-card-number" required>
+        <p></p>
       </div>
       <div class="wrapper">
         <div class="date-field">
           <span>EXP. DATE (MM/YY)</span>
           <input form="creds" type="text" inputmode="numeric" maxlength="2" pattern="^\d$" placeholder="MM" class="form-input-card-month" required>
           <input form="creds" type="text" inputmode="numeric" maxlength="2" pattern="^\d$" placeholder="YY" class="form-input-card-year" required>
+          <p></p>
         </div>
         <div class="cvc-field">
           <span>CVC</span>
           <input form="creds" type="text" inputmode="numeric" maxlength="3" pattern="^\d$" placeholder="e.g. 123" class="form-input-cvc" required>
+          <p></p>
         </div>
       </div>
       <input type="submit" class="submit-button" value="Confirm" onclick="addCard()"></input>

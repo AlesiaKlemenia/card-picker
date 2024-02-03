@@ -14,7 +14,7 @@ function initializeListeners() {
   const [userName, userCard, userCardMonth, userCardYear, userCardCVC] = getFormElements(); 
 
   userName.addEventListener('input', function() { displayUserName(userName, '.user-name') } );
-  userCard.addEventListener('input', function() { displayUserCard(userCard, '.user-card', 16) } );
+  userCard.addEventListener('input', function() { displayUserData(userCard, '.user-card', 16) } );
   userCardMonth.addEventListener('input', function() { displayUserData(userCardMonth, '.user-card-month', 2) } );
   userCardYear.addEventListener('input', function() { displayUserData(userCardYear, '.user-card-year', 2) } );
   userCardCVC.addEventListener('input', function() { displayUserData(userCardCVC, '.user-card-cvc', 3) } );
@@ -23,9 +23,11 @@ function initializeListeners() {
 function addCard() {
   const [userName, userCard, userCardMonth, userCardYear, userCardCVC] = getFormElements();
 
-  validateUserData(userName, userCard, userCardMonth, userCardYear, userCardCVC);
+  const isDataValid = validateUserData(userName, userCard, userCardMonth, userCardYear, userCardCVC);
 
-  showSuccessWindow();
+  if (isDataValid) {
+    showSuccessWindow();
+  }
 }
 
 
@@ -40,16 +42,25 @@ function displayUserName(userName, displayElement) {
 function displayUserData(userData, displayElement, maxLength) {
   if (userData) {
     const element = document.querySelector(displayElement);
-    element.textContent = `${'0'.repeat(maxLength - userData.value.length)}${userData.value}`;
+    if (userData.className === 'form-input-cvc') {
+      element.textContent = getShowStringWithRightZeroes(userData.value, maxLength);
+    } else if (userData.className === 'form-input-card-number') {
+      const cardNumber = getShowStringWithRightZeroes(userData.value, maxLength);
+      element.textContent = cardNumber.match(/.{4}/g).join(' ');
+    }
+    else {
+      element.textContent = getShowStringWithLeftZeroes(userData.value, maxLength);
+    }
+    // element.textContent = `${'0'.repeat(maxLength - userData.value.length)}${userData.value}`;
   }
 }
 
-function displayUserCard(userCard, displayElement, maxLength) {
-  if (userCard) {
-    const element = document.querySelector(displayElement);
-    const cardNumber = `${'0'.repeat(maxLength - userCard.value.length)}${userCard.value}`;
-    element.textContent = cardNumber.match(/.{4}/g).join(' ');
-  }
+function getShowStringWithLeftZeroes(value, length) {
+  return `${'0'.repeat(length - value.length)}${value}`;
+}
+
+function getShowStringWithRightZeroes(value, length) {
+  return `${value}${'0'.repeat(length - value.length)}`;
 }
 
 function validateUserData(userName, userCard, userCardMonth, userCardYear, userCardCVC) {
@@ -58,28 +69,47 @@ function validateUserData(userName, userCard, userCardMonth, userCardYear, userC
   const userCardYearRegex = new RegExp("^[0-9]{2}$");
   const userCardCVCRegex = new RegExp("[0-9]{3}");
 
-  validateUserField(userName, userNameRegex);
-  validateUserField(userCard, userCardRegex);
-  validateUserMonthField(userCardMonth, userCardRegex);
-  validateUserField(userCardYear, userCardYearRegex);
-  validateUserField(userCardCVC, userCardCVCRegex);  
+  const isUserNameValid = validateUserField(userName, userNameRegex);
+  const isUserCardValid = validateUserField(userCard, userCardRegex);
+  const isUserCardMonthValid = validateUserMonthField(userCardMonth, userCardRegex);
+  const isUserCardYearValid = validateUserField(userCardYear, userCardYearRegex);
+  const isUserCardCVCValid = validateUserField(userCardCVC, userCardCVCRegex);
+
+  return (isUserNameValid && isUserCardValid && isUserCardMonthValid && isUserCardYearValid && isUserCardCVCValid);
 }
 
 function validateUserField(userData, regex) {
+  if (!userData.value) {
+    customizeInvalid(userData);
+    showBlankMessage(userData.nextSibling);
+    return false;
+  }
+
   if (regex.test(userData.value)) { 
     customizeValid(userData);
+    return true;
   }
   else {
     customizeInvalid(userData);
+    return false;
   }
 }
 
 function validateUserMonthField(userCardMonth) {
-  if (userCardMonth > 12 || userCardMonth < 1) {
+  // console.log(userCardMonth);
+  if (!userCardMonth.value) {
     customizeInvalid(userCardMonth);
+    showBlankMessage(userCardMonth.parentNode.querySelector('p'));
+    return false;
+  }
+
+  if (userCardMonth.value > 12 || userCardMonth.value < 1) {
+    customizeInvalid(userCardMonth);
+    return false;
   }
   else {
     customizeValid(userCardMonth);
+    return true;
   }
 }
 
@@ -89,6 +119,37 @@ function customizeInvalid(userInputField) {
 
 function customizeValid(userInputField) {
   userInputField.style.border = "1px solid #DFDEE0";
+}
+
+function showBlankMessage(element) {
+  const p = element.nextSibling;
+
+  p.innerHTML = "Can't be blank";
+  p.style.color = 'red';
+  p.style.margin = '8px 0 0 0';
+
+  const formWrapper = document.querySelector('.form-wrapper');
+  console.log(formWrapper.className);
+  formWrapper.style.height = changeElementHeight(formWrapper, 23);
+
+  const form = document.querySelector('form');
+  console.log(form.className);
+  form.style.height = changeElementHeight(form, 23);
+
+  const parentNode = element.parentNode;
+  console.log(parentNode.className);
+  parentNode.style.height = changeElementHeight(parentNode, 23);
+
+  const divWrapper = parentNode.parentNode;
+  console.log(divWrapper.className);
+  divWrapper.style.height = changeElementHeight(divWrapper, 23);
+
+}
+
+function changeElementHeight(element, term) {
+  const elementHeight = element.offsetHeight;
+  const newElementHeight = `${elementHeight + +term}px`;
+  return newElementHeight;
 }
 
 async function showSuccessWindow() {
